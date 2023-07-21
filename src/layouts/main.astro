@@ -1,5 +1,5 @@
 ---
-const { content } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -7,9 +7,15 @@ const { content } = Astro.props;
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{content.title}</title>
+		<title>{title}</title>
 	</head>
 	<body>
+		<section class="py-16 bg-white dark:bg-gray-800 md:py-24 ">
+			<div class="container px-4 mx-auto">
+				<div class="p-6 bg-white border border-gray-100 rounded-lg shadow dark:bg-gray-900 dark:border-gray-900">
 		<slot />
+				</div>
+			</div>
+		</section>
 	</body>
 </html>

@@ -1,0 +1,36 @@
+---
+import Button from '../components/Button.astro';
+
+const {session} = Astro.props;
+---
+<div class="p-4 mb-6 rounded-md bg-gray-50 dark:bg-gray-900">
+    <h2 class="mb-4 text-xl font-semibold text-gray-600 dark:text-gray-300">
+        <a href=`/sessions/${session['$id']}`>{session.Title}</a></h2>
+    <div class="flex flex-wrap items-center mb-4 ">
+        <a
+            class="flex items-center mb-2 mr-4 text-sm text-gray-500 md:mb-0 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="w-4 h-4 mr-1 bi bi-calendar" viewBox="0 0 16 16">
+                <path
+                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+            </svg>Created: {new Date(session['$createdAt']).toDateString()}
+        </a>
+        <a
+            class="flex items-center mb-2 mr-4 text-sm text-gray-500 md:mb-0 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-100">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="w-4 h-4 mr-1 bi bi-calendar" viewBox="0 0 16 16">
+                <path
+                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+            </svg>Updated: {new Date(session['$updatedAt']).toDateString()}
+        </a>
+    </div>
+    <p class="mb-4 text-sm text-gray-500 dark:text-gray-400">{session.Abstract}</p>
+    <div class="flex flex-wrap items-center ">
+        <Button url={`/addSession?sessionID=${session['$id']}`}>
+            Edit
+        </Button>
+        <Button url={`/addCFP?sessionID=${session['$id']}`}>
+            Add a CFP
+        </Button>
+    </div>
+</div>
