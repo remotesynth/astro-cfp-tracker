@@ -7,6 +7,7 @@ const currentPath = Astro.url.pathname;
 const { id } = Astro.params;
 const cfpid = Astro.url.searchParams.get('cfp');
 
+// if the URL variable for a CFP ID is present, we're accepting that session
 if (cfpid) {
     acceptCFP(cfpid);
 }

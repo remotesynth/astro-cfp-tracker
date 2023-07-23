@@ -4,6 +4,7 @@ import { getSession, createCFP } from '../lib/AppWrite.js';
 
 let sessionID = Astro.url.searchParams.get('sessionID');
 
+// handle the form submission
 if (Astro.request.method === "POST") {
   try {
     const data = await Astro.request.formData();
@@ -22,6 +23,7 @@ if (Astro.request.method === "POST") {
   }
 }
 
+// this page requires a session ID so redirect if it doesn't exist
 if (!sessionID) {
  return Astro.redirect('/')
 }
